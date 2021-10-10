@@ -1,6 +1,6 @@
 from rest_framework.generics import ListAPIView
-from serializers import ListSerializer, CardSerializer
-from models import List, Card
+from scrumboard.serializers import ListSerializer, CardSerializer
+from scrumboard.models import List, Card
 
 
 class ListApi(ListAPIView):
