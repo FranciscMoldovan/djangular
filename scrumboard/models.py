@@ -16,6 +16,6 @@ class Card(models.Model):
     #  EACH Card must belong to a List
     list = models.ForeignKey(List, related_name="cards", on_delete=models.CASCADE)
     story_points = models.IntegerField(null=True, blank=True)
-
+    business_value = models.IntegerField(null=True, blank=True)
     def __str__(self):
         return "Card: {}".format(self.title)
