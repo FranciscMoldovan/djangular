@@ -1,9 +1,9 @@
-from django.conf.urls import url
-from scrumboard.api import ListApi, CardApi
-from django.views.generic import TemplateView
+from scrumboard.api import CardViewSet, ListViewSet
+from rest_framework.routers import DefaultRouter
 
-urlpatterns = [
-    url(r'^lists$', ListApi.as_view()),
-    url(r'^cards$', CardApi.as_view()),
-    url(r'^home', TemplateView.as_view(template_name="home.html"))
-]
+router = DefaultRouter() # insteadd of urlpatterns list
+router.register(r'lists', ListViewSet)
+router.register(r'cards', CardViewSet)
+
+# calling a bad URL shows a lot of URLS created automatically
+urlpatterns = router.urls
