@@ -6,6 +6,8 @@
           function ScrumboardController($scope,$http){
             $scope.add = function(list, title){
                 var card = {
+                    // foreign key from JS below:
+                    list: list.id, // now we have FK
                     title: title
                 };
                 // POST to server
