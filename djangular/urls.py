@@ -20,6 +20,6 @@ from django.views.generic import TemplateView
 
 urlpatterns = [
     path(r'admin/', admin.site.urls),
-    path(r'^$', TemplateView.as_view(template_name="scrumboard/home.html")),
+    path(r'', TemplateView.as_view(template_name="scrumboard/home.html")),
     path(r'scrumboard/', include('scrumboard.urls'))
 ]
