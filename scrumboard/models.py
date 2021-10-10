@@ -12,6 +12,10 @@ class List(models.Model):
 class Card(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField(blank=True)
+    #  relation with foreign key below
+    #  EACH Card must belong to a List
+    list = models.ForeignKey(List, related_name="cards", on_delete=models.CASCADE)
+    story_points = models.IntegerField(null=True, blank=True)
 
     def __str__(self):
         return "Card: {}".format(self.title)
