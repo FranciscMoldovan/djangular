@@ -7,7 +7,8 @@ from .serializers import UserSerializer
 
 
 class LoginView(views.APIView):
-    def post(self, request):
+    @staticmethod
+    def post(request):
         user = authenticate(
             username=request.data.get("username"),
             password=request.data.get("password")
@@ -16,7 +17,7 @@ class LoginView(views.APIView):
         if user is None or not user.is_active:
             return Response({
                 'status': 'Unauthorized',
-                'message': 'Username of passwork incorrect'
+                'message': 'Username of password incorrect'
             }, status=status.HTTP_401_UNAUTHORIZED)
 
         login(request=request, user=user)
@@ -24,8 +25,7 @@ class LoginView(views.APIView):
 
 
 class LogoutView(views.APIView):
-    def get(self, request):
-        logout(self, request=request)
+    @staticmethod
+    def get(request):
+        logout(request)
         return Response({}, status=status.HTTP_204_NO_CONTENT)
-
-
