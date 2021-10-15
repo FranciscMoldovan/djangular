@@ -23,6 +23,11 @@
                 });
             };
 
+            $scope.login = function(){
+                $http.post('/auth_api/login/',
+                {username: 'fmoldovan', password: '0000'});
+            }
+
             // get angular code for HTTP GET
             $scope.data = []; // init data
             // next, get from DB, then waits for response
